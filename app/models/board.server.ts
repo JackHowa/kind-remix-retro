@@ -1,4 +1,6 @@
 import { prisma } from "~/db.server";
+// so I let the db drive the types
+import type { Board } from "@prisma/client";
 
 export async function getBoards() {
   // prisma handles types
@@ -11,4 +13,8 @@ export async function getBoards() {
 // todo: handle undefined
 export async function getBoard(slug: string) {
   return prisma.board.findUnique({ where: { slug } });
+}
+
+export async function createBoard(board: Pick<Board, "slug" | "title">) {
+  return prisma.board.create({ data: board });
 }
