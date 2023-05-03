@@ -22,6 +22,11 @@ export default function BoardAdmin() {
                 </Link>
               </li>
             ))}
+            <li key="new">
+              <Link to="new" className="text-blue-600 underline">
+                New Board
+              </Link>
+            </li>
           </ul>
         </nav>
         <main className="col-span-4 md:col-span-3">
