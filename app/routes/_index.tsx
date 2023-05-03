@@ -1,5 +1,5 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 
 import { useOptionalUser } from "~/utils";
 
@@ -37,12 +37,22 @@ export default function Index() {
               </ul>
               <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                 {user ? (
-                  <Link
-                    to="/notes"
-                    className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-yellow-700 shadow-sm hover:bg-yellow-50 sm:px-8"
-                  >
-                    View retros for {user.email}
-                  </Link>
+                  <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">
+                    <Link
+                      to="/boards"
+                      className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-yellow-700 shadow-sm hover:bg-yellow-50 sm:px-8"
+                    >
+                      View boards for {user.email}
+                    </Link>
+                    <Form action="/logout" method="post">
+                      <button
+                        type="submit"
+                        className="rounded bg-slate-600 px-4 py-2 text-blue-100 hover:bg-blue-500 active:bg-blue-600"
+                      >
+                        Logout
+                      </button>
+                    </Form>
+                  </div>
                 ) : (
                   <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">
                     <Link
@@ -57,13 +67,14 @@ export default function Index() {
                     >
                       Log In
                     </Link>
+                    <Link
+                      to="/boards"
+                      className="text-xl text-blue-600 underline"
+                    >
+                      Boards
+                    </Link>
                   </div>
                 )}
-              </div>
-              <div className="mx-auto mt-16 max-w-7xl text-center">
-                <Link to="/boards" className="text-xl text-blue-600 underline">
-                  Boards
-                </Link>
               </div>
             </div>
           </div>
