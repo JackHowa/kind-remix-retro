@@ -1,21 +1,14 @@
-type Board = {
-  slug: string;
-  title: string;
-};
+import { prisma } from "~/db.server";
 
-export async function getBoards(): Promise<Array<Board>> {
-  return [
-    {
-      slug: "robust-convo-on-robustness",
-      title: "Robust convo on robustness",
-    },
-    {
-      slug: "hunting-socks-accident-in-the-woods",
-      title: "Hunting socks accident in the woods",
-    },
-    {
-      slug: "engineers-talking-about-prs",
-      title: "Engineers talking about prs",
-    },
-  ];
+export async function getBoards() {
+  // prisma handles types
+  // Notice we're able to remove the return type, but everything is still fully typed. The TypeScript feature of Prisma is one of its greatest strengths. Less manual typing, but still type safe!
+
+  return prisma.board.findMany();
+}
+
+// this is like the service for getting the board data
+// todo: handle undefined
+export async function getBoard(slug: string) {
+  return prisma.board.findUnique({ where: { slug } });
 }
