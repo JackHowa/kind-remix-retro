@@ -24,6 +24,17 @@ export default function Index() {
               <p className="mx-auto mt-6 max-w-lg text-center text-xl text-black sm:max-w-3xl">
                 Start your retro when you're feeling ready
               </p>
+              <p>Good feedback is:</p>
+              <ul>
+                <li>Specific - focus on a single thing that can change</li>
+                <li>
+                  Kind - assume that everyone on the team is doing their
+                  personal best
+                </li>
+                <li>
+                  Actionable - ensure that the suggestion gives clear next steps
+                </li>
+              </ul>
               <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                 {user ? (
                   <Link
@@ -48,6 +59,11 @@ export default function Index() {
                     </Link>
                   </div>
                 )}
+              </div>
+              <div className="mx-auto mt-16 max-w-7xl text-center">
+                <Link to="/boards" className="text-xl text-blue-600 underline">
+                  Boards
+                </Link>
               </div>
             </div>
           </div>
