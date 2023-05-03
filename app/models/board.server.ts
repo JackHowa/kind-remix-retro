@@ -18,3 +18,14 @@ export async function getBoard(slug: string) {
 export async function createBoard(board: Pick<Board, "slug" | "title">) {
   return prisma.board.create({ data: board });
 }
+
+export async function deleteBoard(slug: string) {
+  return prisma.board.delete({ where: { slug } });
+}
+
+export async function updateBoard(
+  slug: string,
+  board: Pick<Board, "slug" | "title">
+) {
+  return prisma.board.update({ where: { slug }, data: board });
+}
