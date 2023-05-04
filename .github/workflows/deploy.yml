@@ -32,6 +32,8 @@ jobs:
 
       - name: 📥 Install deps
         run: npm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🔬 Lint
         run: npm run lint
@@ -51,7 +53,9 @@ jobs:
           node-version: 18
 
       - name: 📥 Install deps
-        run: npm install
+        run: npm i
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🔎 Type check
         run: npm run typecheck --if-present
@@ -72,7 +76,9 @@ jobs:
 
       - name: 📥 Install deps
         run: npm install
-
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: ⚡ Run vitest
         run: npm run test -- --coverage
 
@@ -95,6 +101,8 @@ jobs:
 
       - name: 📥 Install deps
         run: npm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🛠 Setup Database
         run: npx prisma migrate reset --force
