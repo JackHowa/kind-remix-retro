@@ -118,6 +118,7 @@ Prior to your first deployment, you'll need to do a few things:
 - Create a persistent volume for the sqlite database for both your staging and production environments. Run the following:
 
 -> didn't have enough space to create staging
+-> had to use sjc san jose after wrong region error
 
 ```sh
 fly volumes create data --size 1 --app calm-remix-adf0
