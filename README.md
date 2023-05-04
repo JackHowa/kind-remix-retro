@@ -119,6 +119,7 @@ Prior to your first deployment, you'll need to do a few things:
 
 -> didn't have enough space to create staging
 -> had to use sjc san jose after wrong region error
+-> hit out of memory error, retrying
 
 ```sh
 fly volumes create data --size 1 --app calm-remix-adf0
